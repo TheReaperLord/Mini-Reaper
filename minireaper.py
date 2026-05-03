@@ -27,6 +27,7 @@ from discord.ext import commands
 import asyncio
 import server
 import SQLQuery
+import os
 
 from dotenv import load_dotenv
 
