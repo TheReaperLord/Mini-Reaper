@@ -10,7 +10,7 @@ database = os.getenv('SQL_DATABASE')
 username = os.getenv('SQL_USERNAME')
 password = os.getenv('SQL_PASSWORD')
 # driver= '{ODBC Driver 17 for SQL Server}'
-driver = '{SQL Server}'
+driver = '{ODBC Driver 17 for SQL Server}'
 cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 #pyodbc.pooling = False
 
