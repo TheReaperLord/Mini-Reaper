@@ -81,42 +81,8 @@ class MyClient(commands.Bot):
         # we do not want the bot to reply to itself
         if message.author == client.user:
             return
-
-        '''prefix = SQLQuery.getData("SELECT prefix FROM serverConfig WHERE id = {}".format(message.guild.id))
-        prefix = str(prefix[0][0]).strip()
-        if message.content.startswith(prefix):
-            for x in range(len(message.content)):
-                if x == " " or "":
-                    break
-            command = message.content[1:x+1]
-            await secretSanta.commands(message, command)'''
         
         await self.process_commands(message)
-        
-    '''# Registers when an emote is added to a post
-    async def on_raw_reaction_add(self, payload):
-        if payload.member.id == client.user.id:
-            return
-    
-        # Get message details
-        emoji = str(payload.emoji)
-        server = payload.guild_id
-        channel = await client.fetch_channel(payload.channel_id)
-        message = await channel.fetch_message(payload.message_id)
-        serverInfo = servers[server]
-    
-        await starboard.starAdd(payload)
-
-        #await secretSanta.addSanta(payload)
-
-    # Updates when reactions are removed
-    async def on_raw_reaction_remove(self, payload):
-        if payload.user_id == client.user.id:
-            return
-    
-        await starboard.starRemove(payload)
-
-        #await secretSanta.removeSanta(payload)'''
     
     async def on_ready(self):
         await client.change_presence(activity = discord.CustomActivity(name = "MK II"))

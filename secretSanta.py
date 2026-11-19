@@ -13,28 +13,9 @@ import pyodbc
 
 santa = "🎅"
 
-'''async def addSanta(payload):
-    emoji = str(payload.emoji)
-
-    santaMessage = SQLQuery.getData("SELECT secretSantaMessage FROM serverConfig WHERE id = {}".format(payload.guild_id))
-    santaMessage = santaMessage[0][0]
-    
-    if payload.message_id == santaMessage and emoji == santa:
-        SQLQuery.sendData("INSERT INTO secretSantaParticipants (id, server) VALUES ({0}, {1})".format(payload.member.id, payload.guild_id))'''
-
-'''async def removeSanta(payload):
-    emoji = str(payload.emoji)
-
-    santaMessage = SQLQuery.getData("SELECT secretSantaMessage FROM serverConfig WHERE id = {}".format(payload.guild_id))
-    santaMessage = santaMessage[0][0]
-
-    if payload.message_id == santaMessage and emoji == santa:
-        SQLQuery.sendData("DELETE FROM secretSantaParticipants WHERE id = {0} AND server = {1}".format(payload.user_id, payload.guild_id))'''
-
 async def textcommands(message, command):
     originalMessage = message
     
-        
     if command.startswith("sst"):
         secretSantaMembers = SQLQuery.getData("SELECT id FROM secretSantaParticipants WHERE server = {}".format(message.guild.id))
         random.shuffle(secretSantaMembers)
@@ -154,9 +135,9 @@ We have a new feature this year! Use the command /secret-santa set-message to se
 
     @app_commands.command(name="set-message", description="Set a message for Mini Reaper to send to your secret santa!")
     async def setMessage(self, interaction: discord.Interaction, message: str):
-        # If the message wont fit, cut it off so the preview can be accurate)
+        '''# If the message wont fit, cut it off so the preview can be accurate)
         if len(message) > 255:
-            message = message[0:255]
+            message = message[0:255]'''
         # If they're particpating in secret santa, append their message
         SQLQuery.sendData("""
         UPDATE secretSantaParticipants
