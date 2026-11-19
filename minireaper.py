@@ -52,6 +52,7 @@ class MyClient(commands.Bot):
         intents.members = True
         intents.message_content = True
         self.tree.on_error = self.on_tree_error
+        self.me = os.getenv('ME')
 
     async def reloadCogs(self, interaction):
         channel = interaction.channel
