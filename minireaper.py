@@ -65,7 +65,7 @@ class MyClient(commands.Bot):
                     await channel.send(content=f"\nFailed to load {cog}", )
                 else:
                     await channel.send(content=f"\nSuccessfully loaded {cog}")
-            self.tree.copy_global_to(guild=TEST_SERVER)
+            #self.tree.copy_global_to(guild=TEST_SERVER)
             await self.tree.sync(guild=TEST_SERVER)
             await self.tree.sync()
             await channel.send("Loading Complete!")
@@ -74,7 +74,7 @@ class MyClient(commands.Bot):
         print('loading cogs')
         for cog in cogs:
             await self.load_extension(cog)
-        self.tree.copy_global_to(guild=TEST_SERVER)
+        #self.tree.copy_global_to(guild=TEST_SERVER)
         await self.tree.sync(guild=TEST_SERVER)
         await self.tree.sync()
 
@@ -86,6 +86,7 @@ class MyClient(commands.Bot):
         await self.process_commands(message)
     
     async def on_ready(self):
+        self.setup_hook()
         await client.change_presence(activity = discord.CustomActivity(name = "MK II"))
         print('Logged in as')
         print(client.user.name)
