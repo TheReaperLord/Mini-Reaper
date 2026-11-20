@@ -34,6 +34,7 @@ class secretSanta(commands.GroupCog, group_name='secret-santa'):
 Please use the command /secret-santa set-message to set a personalised message that only your secret santa will see!
 After last year I upped the character limit massively, so you can enter up to 1000 characters! Use them well""".format(start_date, end_date)
         await interaction.channel.send(msg)
+        await interaction.followup.send("Message successfully", ephemeral=True)
 
     @app_commands.command(name="send-dms", description="must be run in same channel as react message")
     @app_commands.checks.has_permissions(administrator=True)
@@ -100,9 +101,9 @@ After last year I upped the character limit massively, so you can enter up to 10
         await interaction.response.send_message("Message set to: {}".format(message), ephemeral=True)
 
     @app_commands.command(name="check-message", description="Check your secret santa message")
-    async def setMessage(self, interaction: discord.Interaction, message: str):
+    async def checkMessage(self, interaction: discord.Interaction):
         message = SQLQuery.getData("SELECT message FROM secretSantaParticipants WHERE server = {0} AND id = {1}".format(interaction.guild_id, interaction.user.id))
-        await interaction.response.send_message("Message set to: {}".format(message), ephemeral=True)
+        await interaction.response.send_message("Message set to: {}".format(message[0][0]), ephemeral=True)
 
 async def setup(bot):
     print("secretSanta loading")
