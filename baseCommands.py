@@ -24,7 +24,8 @@ class BaseCommands(commands.Cog):
         print("Message Detected in Base Commands")'''
 
     @app_commands.command()
-    @checks.is_me()
+    #@checks.is_me() << there's a real version of this, but keeping this for reference on making custom checks
+    @app_commands.checks.is_owner()
     async def reload(self, interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=True, thinking=True)
         await self.bot.reloadCogs(interaction)

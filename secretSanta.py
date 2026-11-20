@@ -31,10 +31,10 @@ class secretSanta(commands.GroupCog, group_name='secret-santa'):
 6. __<t:{1}:R>__, we will hold the Secret Santa reveals and marvel over all the wonderful gifts!
 
 **NOTE:** __Gifts are strictly non-monetary__, as in gifts should be personally made, not bought.
-Please use the command /secret-santa set-message to set a personalised message that only your secret santa will see!
+Please use the command `/secret-santa set-message` to set a personalised message that only your secret santa will see!
 After last year I upped the character limit massively, so you can enter up to 1000 characters! Use them well""".format(start_date, end_date)
         await interaction.channel.send(msg)
-        await interaction.response.send("Message successfully", ephemeral=True)
+        await interaction.response.send_message("Message successfully", ephemeral=True)
 
     @app_commands.command(name="send-dms", description="must be run in same channel as react message")
     @app_commands.checks.has_permissions(administrator=True)
