@@ -42,7 +42,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 TEST_SERVER = discord.Object(id = os.getenv('TEST_SERVER'))
 
-cogs = ["errors", "baseCommands", "secretSanta", "starboard"]
+cogs = ["errors", "baseCommands", "secretSanta", "starboard", "minecraft"]
 
 class MyClient(commands.Bot):
     user: discord.ClientUser # Supresses an error
