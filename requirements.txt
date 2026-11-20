@@ -1,3 +1,4 @@
 discord.py==2.5.2
 pyodbc==5.2.0
 python-dotenv==1.2.2
+mcsmp==0.0.4

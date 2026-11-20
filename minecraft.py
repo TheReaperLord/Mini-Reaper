@@ -10,8 +10,7 @@ import asyncio
 import server
 import os
 
-from mcsmp.client import Client
-from mcsmp.schemas import UntypedGameRule
+import requests
 
 
 class Minecraft(commands.GroupCog, group_name='minecraft'):
@@ -25,7 +24,7 @@ class Minecraft(commands.GroupCog, group_name='minecraft'):
     @app_commands.command()
     #@app_commands.checks.has_permissions(administrator=True)
     async def activePlayers(self, interaction: discord.Interaction):
-        async with Client(os.getenv("MC_HOST"), 25585, os.getenv("MC_SECRET")) as client:
+        async with mcsmp.client(os.getenv("MC_HOST"), 25585, os.getenv("MC_SECRET")) as client:
             # Get the currently online players
             players = await client.players.get()
             await interaction.response.send_message(players)

@@ -42,7 +42,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 TEST_SERVER = discord.Object(id = os.getenv('TEST_SERVER'))
 
-cogs = ["errors", "baseCommands", "secretSanta", "starboard", "minecraft"]
+cogs = ["errors", "baseCommands", "secretSanta", "starboard"]
 
 class MyClient(commands.Bot):
     user: discord.ClientUser # Supresses an error
@@ -86,7 +86,7 @@ class MyClient(commands.Bot):
         await self.process_commands(message)
     
     async def on_ready(self):
-        self.setup_hook()
+        await self.setup_hook()
         await client.change_presence(activity = discord.CustomActivity(name = "MK II"))
         print('Logged in as')
         print(client.user.name)
