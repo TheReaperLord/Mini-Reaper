@@ -61,10 +61,10 @@ class MyClient(commands.Bot):
             for cog in cogs:
                 try:
                     await self.reload_extension(cog)
-                except:
-                    await channel.send(content=f"\nFailed to load {cog}", )
+                except Exception as e:
+                    await channel.send(content=f"Failed to load {cog}/n", e)
                 else:
-                    await channel.send(content=f"\nSuccessfully loaded {cog}")
+                    await channel.send(content=f"Successfully loaded {cog}")
             #self.tree.copy_global_to(guild=TEST_SERVER)
             await self.tree.sync(guild=TEST_SERVER)
             await self.tree.sync()
